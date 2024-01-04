@@ -46,9 +46,9 @@ sudo sed -i "s/^$target_line/# $target_line/" "$file_path"
 
 #PIPING THIS INTO WAYFIRE.INI
 #to see top bar hit super key and Enter to kill superkey and x
-# binding_show_taskbar='<super>' KEY_ENTER
+# binding_show_taskbar=<super> KEY_ENTER
 #command_show_taskbar=wf-panel-pi
-#binding_hide_taskbar='<super>' KEY_X
+#binding_hide_taskbar=<super> KEY_X
 #command_hide_taskbar=sudo pkill wf-panel-pi
 
 # File path
@@ -58,7 +58,7 @@ file_path="/home/$USER/.config/wayfire.ini"
 target_line="command_power = pwrkey"
 
 # Use sed to append the lines after the target line
-sed -i "/$target_line/a\binding_show_taskbar='<super>' KEY_ENTER\ncommand_show_taskbar=wf-panel-pi\nbinding_hide_taskbar='<super>' KEY_ENTER\ncommand_hide_taskbar=sudo pkill wf-panel-pi" "$file_path"
+sed -i "/$target_line/a\binding_show_taskbar=<super> KEY_ENTER\ncommand_show_taskbar=wf-panel-pi\nbinding_hide_taskbar=<super> KEY_ENTER\ncommand_hide_taskbar=sudo pkill wf-panel-pi" "$file_path"
 
 
 
