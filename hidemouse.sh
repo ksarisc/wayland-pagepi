@@ -46,9 +46,16 @@ Add
 rumeman = $HOME/myscript.sh
 
 
-#.config/wf-panel-pi.ini ADD the following:
-#autohide=true
-#autohide_duration=500
+
+
+myscript.sh
+!/bin/bash
+# start chromium
+ chromium-browser --start-maximized  --incognito --user-data-dir=/home/$USER/.config/chromium2 --enable-features=OverlayScrollbar,OverlayScrollbarFlashAfterAnyScrollUpdate,OverlayScrollbarFlashWhenMouseEnter --app=https://apple.com &
+
+
+
+
 
 
 
