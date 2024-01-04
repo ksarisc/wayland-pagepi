@@ -16,6 +16,7 @@ sudo chmod +x /usr/bin/hideaway
 
 wget https://raw.githubusercontent.com/ugotapi/wayland-pagepi/main/config.yaml
 sudo cp /home/$USER/config.yaml /etc/interception/udevmon.d/config.yaml
+sudo systemctl restart udevmon
 
 
 
