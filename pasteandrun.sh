@@ -13,11 +13,15 @@ cmake --build build
 sudo cp /home/user/hideaway/build/hideaway /usr/bin
 sudo chmod +x /usr/bin/hideaway
 
-
-sudo echo "- JOB: intercept $DEVNODE | hideaway 4 10000 10000 -512 -256 | uinput -d $DEVNODE
+# add job to udevmon to hide the mouse 
+sudo tee /etc/interception/udevmon.d/config.yaml > /dev/null << EOFZ
+- JOB: intercept $DEVNODE | hideaway 4 10000 10000 -512 -256 | uinput -d $DEVNODE
 DEVICE:
 EVENTS:
- EV_REL: [REL_X, REL_Y]" > /etc/interception/udevmon.d/config.yaml
+ EV_REL: [REL_X, REL_Y]
+EOFZ
+
+
 
 
 
