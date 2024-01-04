@@ -95,6 +95,8 @@ else
     echo -e "$text_to_add" >> "$file_path"
 fi
 
+sudo reboot
+
 
 
 
