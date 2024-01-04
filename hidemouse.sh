@@ -46,9 +46,9 @@ Add
 rumeman = $HOME/myscript.sh
 
 
-.config/wf-panel-pi.ini ADD the following:
-autohide=true
-autohide_duration=500
+#.config/wf-panel-pi.ini ADD the following:
+#autohide=true
+#autohide_duration=500
 
 
 
