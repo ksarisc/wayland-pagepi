@@ -22,6 +22,42 @@ EVENTS:
 
 
 
+ 
+
+cd ~
+nano myscript.sh
+
+Paste
+
+#!/bin/bash
+chromium-browser --new-window --window-position=0,0 --window-size=3840,2160 --incognito --user-data-dir=/home/$USER/.config/chromium2 --enable-features=OverlayScrollbar,OverlayScrollbarFlashAfterAnyScrollUpdate,OverlayScrollbarFlashWhenMouseEnter --app=https://twitch.tv &
+
+Save
+
+
+chmod +x myscript.sh 
+
+
+
+sudo nano $HOME/.config/wayfire.ini 
+
+Add
+[autostart]
+rumeman = $HOME/myscript.sh
+
+
+.config/wf-panel-pi.ini ADD the following:
+autohide=true
+autohide_duration=500
+
+
+
+
+
+
+
+
+
 
 
 
