@@ -20,7 +20,7 @@ sudo tee /etc/interception/udevmon.d/config.yaml > /dev/null << EOFZ
 - JOB: intercept $foo1 | hideaway 4 10000 10000 -512 -256 | uinput -d $foo1
 DEVICE:
 EVENTS:
- EV_REL: [REL_X, REL_Y]
+EV_REL: [REL_X, REL_Y]
 EOFZ
 
 
