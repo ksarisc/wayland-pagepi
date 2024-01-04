@@ -30,28 +30,81 @@ nano myscript.sh
 Paste
 
 #!/bin/bash
-chromium-browser --new-window --window-position=0,0 --window-size=3840,2160 --incognito --user-data-dir=/home/$USER/.config/chromium2 --enable-features=OverlayScrollbar,OverlayScrollbarFlashAfterAnyScrollUpdate,OverlayScrollbarFlashWhenMouseEnter --app=https://twitch.tv &
+chromium-browser --start-maximized  --incognito --user-data-dir=/home/$USER/.config/chromium2 --enable-features=OverlayScrollbar,OverlayScrollbarFlashAfterAnyScrollUpdate,OverlayScrollbarFlashWhenMouseEnter --app=https://apple.com &
 
-Save
 
 
 chmod +x myscript.sh 
 
 
 
-sudo nano $HOME/.config/wayfire.ini 
 
-Add
+
+
+#!/bin/bash
+# File path and target line
+file_path="/etc/wayfire/defaults.ini"
+target_line="autostart0 = wfrespawn wf-panel-pi"
+
+# Use sed to find and modify the line
+sudo sed -i "s/^$target_line/# $target_line/" "$file_path"
+
+
+
+
+#PIPING THIS INTO WAYFIRE.INI
+# binding_show_taskbar='<super>' KEY_ENTER
+#command_show_taskbar=wf-panel-pi
+#binding_hide_taskbar='<super>' KEY_X
+#command_hide_taskbar=sudo pkill wf-panel-pi
+
+# File path
+file_path="/home/$USER/.config/wayfire.ini"
+
+# Target line to append after
+target_line="command_power = pwrkey"
+
+# Use sed to append the lines after the target line
+sed -i "/$target_line/a\binding_show_taskbar='<super>' KEY_ENTER\ncommand_show_taskbar=wf-panel-pi\nbinding_hide_taskbar='<super>' KEY_ENTER\ncommand_hide_taskbar=sudo pkill wf-panel-pi" "$file_path"
+
+
+
+# File path
+file_path="/etc/wayfire/defaults.ini"
+
+# Text string to remove
+text_to_remove="pixdecor"
+
+# Use sed to remove the text string
+sudo sed -i "s/$text_to_remove//g" "$file_path"
+
+
+
+
+
+# File path
+file_path="/home/$USER/.config/wayfire.ini"
+
+# Text string to add
+text_to_add="
 [autostart]
-rumeman = $HOME/myscript.sh
+runmeman = $HOME/myscript.sh
+"
+
+# Check if the [autostart] section already exists
+if grep -q "^\[autostart\]" "$file_path"; then
+    # Append the text after the last line of the [autostart] section
+    sed -i "/^\[autostart\]/,$ a\
+$text_to_add" "$file_path"
+else
+    # Append the text to the end of the file
+    echo -e "$text_to_add" >> "$file_path"
+fi
 
 
 
 
-myscript.sh
-!/bin/bash
-# start chromium
- chromium-browser --start-maximized  --incognito --user-data-dir=/home/$USER/.config/chromium2 --enable-features=OverlayScrollbar,OverlayScrollbarFlashAfterAnyScrollUpdate,OverlayScrollbarFlashWhenMouseEnter --app=https://apple.com &
+
 
 
 
