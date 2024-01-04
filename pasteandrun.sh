@@ -23,10 +23,6 @@ EOFZ
 
 
 
-
-
-
-
 #create the file that starts Chromium a displays a web page. myscript.sh is what you edit to get a different web page on the TV. 
 cat > /home/$USER/myscript.sh << EOL
 #!/bin/sh
@@ -38,7 +34,7 @@ sudo chmod +x /home/$USER/myscript.sh
 
 
 
-#!/bin/bash
+# disable topbar start in wayfire
 # File path and target line
 file_path="/etc/wayfire/defaults.ini"
 target_line="autostart0 = wfrespawn wf-panel-pi"
@@ -50,6 +46,7 @@ sudo sed -i "s/^$target_line/# $target_line/" "$file_path"
 
 
 #PIPING THIS INTO WAYFIRE.INI
+#to see top bar hit super key and Enter to kill superkey and x
 # binding_show_taskbar='<super>' KEY_ENTER
 #command_show_taskbar=wf-panel-pi
 #binding_hide_taskbar='<super>' KEY_X
