@@ -1,7 +1,7 @@
 #!/bin/bash
 # hide mouse in wayland raspbian
 
-sudo apt install interception-tools interception-tools-compat
+sudo apt install -y interception-tools interception-tools-compat
 
 
 sudo apt install -y cmake
@@ -22,22 +22,15 @@ EVENTS:
 
 
 
- 
 
-cd ~
-nano myscript.sh
-
-Paste
-
-#!/bin/bash
+#create the file that starts Chromium a displays a web page. myscript.sh is what you edit to get a different web page on the TV. 
+cat > /home/$USER/myscript.sh << EOL
+#!/bin/sh
+# what this script does: start chromium
 chromium-browser --start-maximized  --incognito --user-data-dir=/home/$USER/.config/chromium2 --enable-features=OverlayScrollbar,OverlayScrollbarFlashAfterAnyScrollUpdate,OverlayScrollbarFlashWhenMouseEnter --app=https://apple.com &
+EOL
 
-
-
-chmod +x myscript.sh 
-
-
-
+sudo chmod +x /home/$USER/myscript.sh
 
 
 
