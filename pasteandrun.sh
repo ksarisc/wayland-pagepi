@@ -74,7 +74,7 @@ file_path="/home/$USER/.config/wayfire.ini"
 target_line="command_power = pwrkey"
 
 # Use sed to append the lines after the target line
-sed -i "/$target_line/a\binding_show_taskbar=<super> KEY_ENTER\ncommand_show_taskbar=wf-panel-pi\nbinding_hide_taskbar=<super> KEY_ENTER\ncommand_hide_taskbar=sudo pkill wf-panel-pi" "$file_path"
+sed -i "/$target_line/a\binding_show_taskbar=<super> KEY_ENTER\ncommand_show_taskbar=wf-panel-pi\nbinding_hide_taskbar=<super> KEY_X\ncommand_hide_taskbar=sudo pkill wf-panel-pi" "$file_path"
 
 
 
