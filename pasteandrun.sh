@@ -125,10 +125,11 @@ cd dotool-b5812c001daeeaff1f259031661e47f3a612220c
 sudo udevadm control --reload && sudo udevadm trigger
 
 echo '#!/bin/sh' > /home/$USER/refresh.sh 
-echo 'echo key ctrl+k:63 | dotool' >> /home/$USER/refresh.sh 
+echo 'echo key ctrl+k:63 | /usr/local/bin/dotool' >> /home/$USER/refresh.sh 
 
 # make executable
 sudo chmod +x /home/$USER/refresh.sh 
+
 
 cd ~
 # refresh every 15 minutes
