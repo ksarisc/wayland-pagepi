@@ -42,7 +42,7 @@ sudo systemctl restart udevmon
 cat > /home/$USER/myscript.sh << EOL
 #!/bin/sh
 # what this script does: start chromium
-chromium-browser --start-maximized  --incognito --user-data-dir=/home/$USER/.config/chromium2 --enable-features=OverlayScrollbar,OverlayScrollbarFlashAfterAnyScrollUpdate,OverlayScrollbarFlashWhenMouseEnter --app=https://twitch.tv &
+chromium-browser --start-maximized  --incognito --user-data-dir=/home/$USER/.config/chromium2 --enable-features=OverlayScrollbar,OverlayScrollbarFlashAfterAnyScrollUpdate,OverlayScrollbarFlashWhenMouseEnter --app=$webvar &
 EOL
 
 sudo chmod +x /home/$USER/myscript.sh
