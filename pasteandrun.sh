@@ -116,7 +116,7 @@ fi
 
 
 
-sudo apt install golang libxkbcommon-dev scdoc
+sudo apt install -y golang libxkbcommon-dev scdoc
 cd ~
 wget https://git.sr.ht/~geb/dotool/archive/b5812c001daeeaff1f259031661e47f3a612220c.tar.gz
 tar -xf b5812c001daeeaff1f259031661e47f3a612220c.tar.gz
@@ -140,25 +140,6 @@ echo "*/15 * * * * DISPLAY=:0 /home/$USER/refresh.sh" >> mycron
 #install new cron file
 crontab mycron
 rm mycron
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 sudo reboot
