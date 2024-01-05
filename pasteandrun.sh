@@ -110,6 +110,56 @@ else
     echo -e "$text_to_add" >> "$file_path"
 fi
 
+
+
+
+
+
+
+sudo apt install golang libxkbcommon-dev scdoc
+cd ~
+wget https://git.sr.ht/~geb/dotool/archive/b5812c001daeeaff1f259031661e47f3a612220c.tar.gz
+tar -xf b5812c001daeeaff1f259031661e47f3a612220c.tar.gz
+cd dotool-b5812c001daeeaff1f259031661e47f3a612220c
+./build.sh && sudo ./build.sh install
+sudo udevadm control --reload && sudo udevadm trigger
+
+echo '#!/bin/sh' > /home/$USER/refresh.sh 
+echo 'echo key ctrl+k:63 | dotool' >> /home/$USER/refresh.sh 
+
+# make executable
+sudo chmod +x /home/$USER/refresh.sh 
+
+cd ~
+# refresh every 15 minutes
+#write out current crontab
+crontab -l > mycron
+#echo new cron into cron file
+echo "*/15 * * * * DISPLAY=:0 /home/$USER/refresh.sh" >> mycron
+#install new cron file
+crontab mycron
+rm mycron
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 sudo reboot
 
 
