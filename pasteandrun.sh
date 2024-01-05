@@ -1,10 +1,7 @@
 #!/bin/bash
 # hide mouse in wayland raspbian
-
 # Ask the user for info
 read -p 'What is the website url you want to display? ' webvar
-
-
 echo Website you want to display on TV? $webvar
 while true; do
     read -p "Is the above info correct? " yn
@@ -16,9 +13,7 @@ while true; do
 done
 echo continuing
 
-
 sudo apt install -y interception-tools interception-tools-compat
-
 
 sudo apt install -y cmake
 cd ~
@@ -34,10 +29,6 @@ wget https://raw.githubusercontent.com/ugotapi/wayland-pagepi/main/config.yaml
 sudo cp /home/$USER/config.yaml /etc/interception/udevmon.d/config.yaml
 sudo systemctl restart udevmon
 
-
-
-
-
 #create the file that starts Chromium a displays a web page. myscript.sh is what you edit to get a different web page on the TV. 
 cat > /home/$USER/myscript.sh << EOL
 #!/bin/sh
@@ -47,18 +38,12 @@ EOL
 
 sudo chmod +x /home/$USER/myscript.sh
 
-
-
 # disable topbar start in wayfire
-# File path and target line
 file_path="/etc/wayfire/defaults.ini"
 target_line="autostart0 = wfrespawn wf-panel-pi"
 
 # Use sed to find and modify the line
 sudo sed -i "s/^$target_line/# $target_line/" "$file_path"
-
-
-
 
 #PIPING THIS INTO WAYFIRE.INI
 #to see top bar hit super key and Enter to kill superkey and x
@@ -76,8 +61,6 @@ target_line="command_power = pwrkey"
 # Use sed to append the lines after the target line
 sed -i "/$target_line/a\binding_show_taskbar=<super> KEY_ENTER\ncommand_show_taskbar=wf-panel-pi\nbinding_hide_taskbar=<super> KEY_X\ncommand_hide_taskbar=sudo pkill wf-panel-pi" "$file_path"
 
-
-
 # File path
 file_path="/etc/wayfire/defaults.ini"
 
@@ -86,10 +69,6 @@ text_to_remove="pixdecor"
 
 # Use sed to remove the text string
 sudo sed -i "s/$text_to_remove//g" "$file_path"
-
-
-
-
 
 # File path
 file_path="/home/$USER/.config/wayfire.ini"
@@ -110,12 +89,6 @@ else
     echo -e "$text_to_add" >> "$file_path"
 fi
 
-
-
-
-
-
-
 sudo apt install -y golang libxkbcommon-dev scdoc
 cd ~
 wget https://git.sr.ht/~geb/dotool/archive/b5812c001daeeaff1f259031661e47f3a612220c.tar.gz
@@ -130,7 +103,6 @@ echo 'echo key ctrl+k:63 | /usr/local/bin/dotool' >> /home/$USER/refresh.sh
 # make executable
 sudo chmod +x /home/$USER/refresh.sh 
 
-
 cd ~
 # refresh every 15 minutes
 #write out current crontab
@@ -140,7 +112,6 @@ echo "*/15 * * * * DISPLAY=:0 /home/$USER/refresh.sh" >> mycron
 #install new cron file
 crontab mycron
 rm mycron
-
 
 sudo reboot
 
