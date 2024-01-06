@@ -113,6 +113,9 @@ echo "*/15 * * * * DISPLAY=:0 /home/$USER/refresh.sh" >> mycron
 crontab mycron
 rm mycron
 
+
+read -p "After this reboot your website should display. To edit the website displayed edit: the file here /home/$USER/myscript.sh  Hit Enter key to continue"
+
 sudo reboot
 
 
