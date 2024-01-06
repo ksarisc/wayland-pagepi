@@ -13,6 +13,9 @@ while true; do
 done
 echo continuing
 
+
+sudo apt update
+sudo apt upgrade
 sudo apt install -y interception-tools interception-tools-compat
 
 sudo apt install -y cmake
