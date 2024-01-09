@@ -16,8 +16,8 @@ echo continuing
 
 sudo apt update
 sudo apt upgrade
+#isntall interception-tools and hideaway
 sudo apt install -y interception-tools interception-tools-compat
-
 sudo apt install -y cmake
 cd ~
 git clone https://gitlab.com/interception/linux/plugins/hideaway.git
@@ -27,10 +27,12 @@ cmake --build build
 sudo cp /home/user/hideaway/build/hideaway /usr/bin
 sudo chmod +x /usr/bin/hideaway
 
+#config file setup for hideaway
 cd ~
 wget https://raw.githubusercontent.com/ugotapi/wayland-pagepi/main/config.yaml
 sudo cp /home/$USER/config.yaml /etc/interception/udevmon.d/config.yaml
 sudo systemctl restart udevmon
+
 
 #create the file that starts Chromium a displays a web page. myscript.sh is what you edit to get a different web page on the TV. 
 cat > /home/$USER/myscript.sh << EOL
@@ -50,7 +52,7 @@ target_line="autostart0 = wfrespawn wf-panel-pi"
 # Use sed to find and modify the line
 sudo sed -i "s/^$target_line/# $target_line/" "$file_path"
 
-#PIPING THIS INTO WAYFIRE.INI
+#THIS GOES THIS INTO WAYFIRE.INI
 #to see top bar hit super key and Enter to kill superkey and x
 # binding_show_taskbar=<super> KEY_ENTER
 #command_show_taskbar=wf-panel-pi
@@ -66,10 +68,11 @@ target_line="command_power = pwrkey"
 # Use sed to append the lines after the target line
 sed -i "/$target_line/a\binding_show_taskbar=<super> KEY_ENTER\ncommand_show_taskbar=wf-panel-pi\nbinding_hide_taskbar=<super> KEY_X\ncommand_hide_taskbar=sudo pkill wf-panel-pi" "$file_path"
 
+
 # File path
 file_path="/etc/wayfire/defaults.ini"
 
-# Text string to remove
+# Text string to remove decorations on windows
 text_to_remove="pixdecor"
 
 # Use sed to remove the text string
@@ -94,6 +97,7 @@ else
     echo -e "$text_to_add" >> "$file_path"
 fi
 
+# install dotool for virtual keyboard press refresh in chromium
 sudo apt install -y golang libxkbcommon-dev scdoc
 cd ~
 wget https://git.sr.ht/~geb/dotool/archive/b5812c001daeeaff1f259031661e47f3a612220c.tar.gz
@@ -108,6 +112,8 @@ echo 'echo key ctrl+k:63 | /usr/local/bin/dotool' >> /home/$USER/refresh.sh
 # make executable
 sudo chmod +x /home/$USER/refresh.sh 
 
+
+#crontab setup
 cd ~
 # refresh every 15 minutes
 #write out current crontab
