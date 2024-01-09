@@ -2,7 +2,7 @@
 
 Simple Digital Signage setup on a Raspberry Pi 4/5 that shows an external web page on the 4k monitor attached.
 
-After running this script is run you will have a kiosk of the web page you entered while running the script. To show the normal Raspbian top taskbar hit Super key aka Windows/Command key and Enter. To hide toolbar Super key and x. 
+After running this script is run you will have a kiosk of the web page you entered while running the script. To show the normal Raspbian top taskbar hit Super key aka Windows/Command key and Enter. To hide toolbar hit Super key and x. 
 
 Copy the content of the 0-waylandpagepi.sh file to a terminal on a newly installed Raspbian Pi and hit Enter. 
 
