@@ -11,7 +11,6 @@ Super + Enter / Super + x
 
 By default the page refreshes every 15 minutes. This script is compatible with Raspian Bookworm 64-bit on a Pi 5/4 device. It uses the default Wayland Wayfire windowing setup, Chromium in app mode, Interception-tools with Hideaway plug (hide mouse), dotool (screen refresh).
 
-Youtube How To
-
+Youtube How To:
 https://youtu.be/qzZgLe_uIjg
 
