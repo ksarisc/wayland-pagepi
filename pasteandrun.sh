@@ -1,5 +1,5 @@
 #!/bin/bash
-# hide mouse in wayland raspbian
+# hide mouse in Wayland Raspberry Pi OS
 # Ask the user for info
 read -p 'What is the website url you want to display? ' webvar
 echo Website you want to display on TV? $webvar
