@@ -9,7 +9,7 @@ Copy the content of the 0-waylandpagepi.sh file to a terminal on a newly install
 Taskbar on / Taskbar off:
 Super + Enter / Super + x
 
-By default the page refreshes every 15 minutes. This script is compatible with Raspberry Pi OS Bookworm 64-bit on a Pi 5/4 device. It uses the default Wayland Wayfire windowing setup, Chromium in app mode, Interception-tools with Hideaway plug (hide mouse), dotool (screen refresh).
+By default a cronjob forces a page refresh every 15 minutes. This script is compatible with Raspberry Pi OS Bookworm 64-bit on a Pi 5/4 device. It uses the default Wayland Wayfire windowing setup, Chromium in app mode, Interception-tools with Hideaway plug (hide mouse), dotool (screen refresh).
 
 Youtube How To:
 https://youtu.be/qzZgLe_uIjg
