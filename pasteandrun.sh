@@ -1,6 +1,6 @@
 #!/bin/bash
 # hide mouse in Wayland Raspberry Pi OS
-# Ask the user for info
+# Ask the user for info on displayed website
 read -p 'What is the website url you want to display? ' webvar
 echo Website you want to display on TV? $webvar
 while true; do
@@ -16,7 +16,7 @@ echo continuing
 
 sudo apt update
 sudo apt upgrade
-#isntall interception-tools and hideaway
+#install interception-tools and hideaway
 sudo apt install -y interception-tools interception-tools-compat
 sudo apt install -y cmake
 cd ~
@@ -34,10 +34,10 @@ sudo cp /home/$USER/config.yaml /etc/interception/udevmon.d/config.yaml
 sudo systemctl restart udevmon
 
 
-#create the file that starts Chromium a displays a web page. myscript.sh is what you edit to get a different web page on the TV. 
+#create the file that starts Chromium and displays a web page. myscript.sh is what you edit to get a different web page on the TV. 
 cat > /home/$USER/myscript.sh << EOL
 #!/bin/sh
-# what this script does: start chromium
+# what this script does: start chromium full screen
 chromium-browser --start-maximized  --incognito --user-data-dir=/home/$USER/.config/chromium2 --enable-features=OverlayScrollbar,OverlayScrollbarFlashAfterAnyScrollUpdate,OverlayScrollbarFlashWhenMouseEnter --app=$webvar &
 sleep 4
 echo key ctrl+k:63 | /usr/local/bin/dotool
@@ -97,7 +97,7 @@ else
     echo -e "$text_to_add" >> "$file_path"
 fi
 
-# install dotool for virtual keyboard press refresh in chromium
+# install dotool for virtual keyboard press refresh in chromium to keep screen refreshed
 sudo apt install -y golang libxkbcommon-dev scdoc
 cd ~
 wget https://git.sr.ht/~geb/dotool/archive/b5812c001daeeaff1f259031661e47f3a612220c.tar.gz
