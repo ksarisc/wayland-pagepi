@@ -16,28 +16,29 @@ echo continuing
 
 sudo apt update
 sudo apt upgrade
-#install interception-tools and hideaway
-sudo apt install -y interception-tools interception-tools-compat
-sudo apt install -y cmake
-cd ~
-git clone https://gitlab.com/interception/linux/plugins/hideaway.git
-cd hideaway
-cmake -B build -DCMAKE_BUILD_TYPE=Release
-cmake --build build
-sudo cp /home/user/hideaway/build/hideaway /usr/bin
-sudo chmod +x /usr/bin/hideaway
+# #install interception-tools and hideaway
+# sudo apt install -y interception-tools interception-tools-compat
+# sudo apt install -y cmake
+# cd ~
+# git clone https://gitlab.com/interception/linux/plugins/hideaway.git
+# cd hideaway
+# cmake -B build -DCMAKE_BUILD_TYPE=Release
+# cmake --build build
+# sudo cp /home/user/hideaway/build/hideaway /usr/bin
+# sudo chmod +x /usr/bin/hideaway
 
-#config file setup for hideaway
-cd ~
-wget https://raw.githubusercontent.com/ugotapi/wayland-pagepi/main/config.yaml
-sudo cp /home/$USER/config.yaml /etc/interception/udevmon.d/config.yaml
-sudo systemctl restart udevmon
+# #config file setup for hideaway
+# cd ~
+# wget https://raw.githubusercontent.com/ugotapi/wayland-pagepi/main/config.yaml
+# sudo cp /home/$USER/config.yaml /etc/interception/udevmon.d/config.yaml
+# sudo systemctl restart udevmon
 
 
 #create the file that starts Chromium and displays a web page. myscript.sh is what you edit to get a different web page on the TV. 
 cat > /home/$USER/myscript.sh << EOL
 #!/bin/sh
 # what this script does: start chromium full screen
+sleep 2
 chromium-browser --start-maximized  --incognito --user-data-dir=/home/$USER/.config/chromium2 --enable-features=OverlayScrollbar,OverlayScrollbarFlashAfterAnyScrollUpdate,OverlayScrollbarFlashWhenMouseEnter --app=$webvar &
 sleep 4
 echo key ctrl+k:63 | /usr/local/bin/dotool
@@ -128,28 +129,3 @@ rm mycron
 read -p "After this reboot your website should display. To edit the website displayed edit: the file here /home/$USER/myscript.sh  Hit Enter key to continue"
 
 sudo reboot
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

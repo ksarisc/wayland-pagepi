@@ -1,5 +1,7 @@
 # wayland-pagepi
 
+!! ORIGINAL: https://github.com/ugotapi/wayland-pagepi !!
+
 Simple Digital Signage setup on a Raspberry Pi 4/5 that shows an external web page on the 4k monitor attached.
 
 After running this script is run you will have a kiosk of the web page you entered while running the script. To show the normal Raspbery Pi OS top taskbar hit Super key aka Windows/Command key and Enter. To hide toolbar hit Super key and x. 
@@ -13,4 +15,3 @@ By default a cronjob forces a page refresh every 15 minutes. This script is comp
 
 Youtube How To:
 https://youtu.be/qzZgLe_uIjg
-
