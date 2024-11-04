@@ -78,9 +78,15 @@ END
 sudo sed -i /etc/sudoers -re 's/.*NOPASSWD.*/PASSWD/g'
 
 # rotate display on kit stations, but NOT on metrics boards
-if [ $screenWidth -lt $screenHeight ]
-then
-    cat /boot/cmdline.txt >> echo "video=HDMI-A-1:${screenWidth}x${screenHeight}M@60D" > /boot/cmdline.txt
-fi
+#if [ $screenWidth -lt $screenHeight ]
+#then
+#    cat /boot/cmdline.txt >> echo "video=HDMI-A-1:${screenWidth}x${screenHeight}M@60D" > /boot/cmdline.txt
+#fi
+
+wlr-randr --output "HDMI-A-1" --transform 90
+#			OR normal
+#			OR 270
+#
+# AND use launcher from pasteandrun
 
 sudo reboot
